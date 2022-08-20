@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="container-fluid m-0">
+  <!-- row and justify-content-center class is used to place the form in center -->
+  <section class="row justify-content-center">
+    <section class="col-12 col-sm-6 col-md-4">
+      <form class="form-container" method="POST">
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>{{message}}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {% endfor %}
+            {% endif %}
+        {% csrf_token %}
+      <div class="form-group">
+        <h4 class="text-center font-weight-bold mb-3"> Login </h4>
+        <label for="username">Username</label>
+         <input type="text" class="form-control mb-3" id="username" name="username" aria-describeby="emailHelp" placeholder="Enter username">
+      </div>
+      <div class="form-group mb-2">
+        <label for="password">Password</label>
+        <input type="password" class="form-control mb-3" id="password" name="password" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-primary btn-block mb-3">Submit</button>
+      <div class="form-footer mb-3">
+        <p> Don't have an account? <a href={% url 'register' %}>Sign Up</a></p>
+        
+      </div>
+      </form>
+    </section>
+  </section>
+</section>
+{% endblock  %}

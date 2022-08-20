@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<table id="table_id" class="display">
+    <thead>
+        <tr>
+            <th>Student</th>
+            <th>Subjects count</th>
+            <th><a class="btn btn-outline-info" href={% url 'add_student' %}>Add</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in students %}
+        <tr>
+            <td>{{student}}</td>
+            <td>{{student.subjectsmodel_set.count}}</td>
+            <td><a class="btn btn-outline-info" href={% url 'view_student' student.id %}>Details</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}
